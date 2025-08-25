@@ -1,4 +1,4 @@
-name: .NET 9 CI with Tests & Email Notifications
+name: .NET 9 CI with Tests
 
 on:
   push:
@@ -19,31 +19,12 @@ jobs:
       with:
         dotnet-version: 9.0.x
 
+
     - name: Restore dependencies
       run: dotnet restore
-
 
     - name: Build
       run: dotnet build --no-restore
 
     - name: Test
       run: dotnet test --no-build --verbosity normal
-
-    - name: Send email notification
-      if: always()
-      uses: dawidd6/action-send-mail@v3
-      with:
-        server_address: smtp.gmail.com
-        server_port: 465
-        username: ${{ secrets.EMAIL_USERNAME }}
-        password: ${{ secrets.EMAIL_PASSWORD }}
-        subject: "GitHub Actions Result for ${{ github.repository }}"
-        body: |
-          Workflow run completed.
-          Status: ${{ job.status }}
-          Repository: ${{ github.repository }}
-          Branch: ${{ github.ref }}
-          Actor: ${{ github.actor }}
-          Check logs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        to: ${{ secrets.EMAIL_USERNAME }}
-        from: ${{ secrets.EMAIL_USERNAME }}

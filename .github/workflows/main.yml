@@ -1,0 +1,47 @@
+name: .NET 9 CI with Tests
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. سحب الكود
+    - uses: actions/checkout@v3
+
+    # 2. تثبيت .NET 9
+    - name: Setup .NET 9
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 9.0.x
+
+    # 3. استرجاع الحزم
+    - name: Restore dependencies
+      run: dotnet restore
+
+    # 4. بناء المشروع
+    - name: Build
+      run: dotnet build --no-restore
+
+    # 5. تشغيل الاختبارات
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+
+    # 6. إرسال إشعار بالبريد عند الفشل
+    - name: Send email if workflow fails
+      if: failure()
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: smtp.gmail.com
+        server_port: 465
+        username: ${{ secrets.EMAIL_USERNAME }}
+        password: ${{ secrets.EMAIL_PASSWORD }}
+        subject: "GitHub Actions Failed"
+        body: "Workflow failed. Check the logs: ${{ github.repository }}/actions"
+        to: ${{ secrets.EMAIL_USERNAME }}
+        from: ${{ secrets.EMAIL_USERNAME }}

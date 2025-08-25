@@ -1,0 +1,10 @@
+**/bin/
+**/obj/
+**/*.md
+**/*.txt
+**/*.user
+**/*.suo
+**/.vscode/
+**/.idea/
+tests/
+appsettings.Development.json

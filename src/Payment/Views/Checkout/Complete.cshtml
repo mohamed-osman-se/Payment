@@ -1,0 +1,33 @@
+@{
+    ViewData["Title"] = "Payment Result";
+}
+
+<div class="container d-flex align-items-center justify-content-center min-vh-100">
+    <div class="card shadow-lg p-4 w-100" style="max-width: 600px; border-radius: 1rem;">
+        <div class="text-center mb-4">
+            <img src="~/favicon.png" alt="Logo" width="48" height="48" class="mb-3">
+            <h2 class="fw-bold text-primary">Payment Result</h2>
+        </div>
+
+        <div class="mb-3">
+            <p><strong>PaymentIntent ID:</strong> @ViewBag.PaymentIntentId</p>
+            <p><strong>Status:</strong> 
+                <span class="badge @(ViewBag.Status == "succeeded" ? "bg-success" : "bg-warning")">
+                    @ViewBag.Status
+                </span>
+            </p>
+            <p class="text-muted">
+                The final status will be confirmed once the Webhook is received.
+            </p>
+        </div>
+
+        <div class="d-flex justify-content-center mt-4">
+            <a asp-controller="Cart" asp-action="showcart" class="btn btn-outline-primary me-2">
+                Return to Cart
+            </a>
+            <a asp-controller="Products" asp-action="list" class="btn btn-primary">
+                Continue Shopping
+            </a>
+        </div>
+    </div>
+</div>

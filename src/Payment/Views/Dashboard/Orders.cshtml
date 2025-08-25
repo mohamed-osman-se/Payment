@@ -1,0 +1,75 @@
+@model IEnumerable<Payment.Models.Order>
+
+@{
+    ViewData["Title"] = "Paid Orders";
+}
+
+<div class="container my-5">
+    <div class="card shadow-lg rounded-3">
+        <!-- Header -->
+        <div class="card-header bg-dark text-white d-flex flex-column flex-md-row justify-content-between align-items-md-center">
+            <h3 class="mb-2 mb-md-0 text-center text-md-start">✅ Paid Orders (Ready to Deliver)</h3>
+            <span class="badge bg-success fs-6 px-3 py-2">Total: @Model.Count()</span>
+        </div>
+
+        <!-- Body -->
+        <div class="card-body">
+            @if (!Model.Any())
+            {
+                <div class="alert alert-info text-center py-4 shadow-sm">
+                    No paid orders yet.
+                </div>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">User</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Product</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Payment Intent</th>
+                                <th scope="col">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var order in Model)
+                            {
+                                <tr>
+                                    <td>@order.Id</td>
+                                    <td class="text-truncate" style="max-width:150px;">
+                                        @order.User?.Name
+                                    </td>
+                                    <td class="text-truncate" style="max-width:200px;">
+                                        @order.User?.Email
+                                    </td>
+                                    <td class="text-truncate" style="max-width:180px;">
+                                        @order.Product?.Name
+                                    </td>
+                                    <td>
+                                        <span class="fw-bold text-success">
+                                            @((order.Product!.Price).ToString("C2"))
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-success">@order.Status</span>
+                                    </td>
+                                    <td>
+                                        <code class="small text-wrap d-block" style="max-width:200px;">
+                                            @order.PaymentIntentId
+                                        </code>
+                                    </td>
+                                    <td>@order.CreatedAt.ToString("yyyy-MM-dd HH:mm")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>

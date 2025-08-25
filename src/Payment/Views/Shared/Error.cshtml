@@ -1,0 +1,16 @@
+﻿@model Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary
+
+@{
+    ViewData["Title"] = "Error";
+}
+
+<div class="container text-center my-5">
+    <div class="card shadow-lg p-5">
+        <h1 class="text-danger fw-bold">⚠ Something went wrong</h1>
+        <p class="lead">An unexpected error occurred. Please try again later.</p>
+
+        <a asp-controller="Products" asp-action="list" class="btn btn-primary mt-3">
+            ⬅ Go Back to Home
+        </a>
+    </div>
+</div>

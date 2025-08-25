@@ -1,0 +1,110 @@
+@model IEnumerable<Payment.Models.Order>
+
+@{
+    ViewData["Title"] = "My Cart";
+}
+
+<div class="container my-5">
+    <h2 class="mb-4 fw-bold text-center text-lg-start">🛒 My Shopping Cart</h2>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="row g-4">
+            <!-- Cart Items -->
+            <div class="col-12 col-lg-8">
+                <div class="table-responsive shadow-sm rounded-3">
+                    <table class="table align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col">Product</th>
+                                <th scope="col" class="text-center">Price</th>
+                                <th scope="col" class="text-center">Status</th>
+                                <th scope="col" class="text-end">Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var order in Model)
+                            {
+                                <tr>
+                                    <td style="min-width:200px;">
+                                        <div class="d-flex align-items-center">
+                                            @if (!string.IsNullOrEmpty(order.Product?.ImageUrl))
+                                            {
+                                                <img src="@order.Product.ImageUrl" 
+                                                     alt="@order.Product?.Name" 
+                                                     class="rounded me-3"
+                                                     style="width:70px; height:70px; object-fit:cover;" />
+                                            }
+                                            else
+                                            {
+                                                <div class="d-flex align-items-center justify-content-center bg-light rounded me-3"
+                                                     style="width:70px; height:70px;">
+                                                    <span class="text-muted small">No Image</span>
+                                                </div>
+                                            }
+                                            <div>
+                                                <h6 class="mb-1 text-truncate" style="max-width: 180px;">
+                                                    @order.Product?.Name
+                                                </h6>
+                                                <small class="text-muted d-block">@order.Product?.Description</small>
+                                                <small class="text-muted">📅 @order.CreatedAt.ToString("g")</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center fw-semibold">
+                                        @order.Product?.Price.ToString("C")
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="badge bg-secondary">@order.Status</span>
+                                    </td>
+                                    <td class="text-end fw-bold text-success">
+                                        @order.Product?.Price.ToString("C")
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Cart Summary -->
+            <div class="col-12 col-lg-4">
+                <div class="card shadow-sm p-4 h-100">
+                    <h5 class="fw-bold mb-3 text-center text-lg-start">Order Summary</h5>
+                    <hr />
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Items (@Model.Count())</span>
+                        <span class="fw-semibold">
+                            @Model.Sum(o => o.Product?.Price ?? 0).ToString("C")
+                        </span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <span>Shipping</span>
+                        <span class="fw-semibold">Free</span>
+                    </div>
+                    <hr />
+                    <div class="d-flex justify-content-between mb-4">
+                        <span class="fw-bold">Total</span>
+                        <span class="fw-bold text-success fs-5">
+                            @Model.Sum(o => o.Product?.Price ?? 0).ToString("C")
+                        </span>
+                    </div>
+                    <form asp-controller="Checkout" asp-action="PayAll" method="get">
+                        <button type="submit" class="btn btn-success w-100 btn-lg">
+                            Proceed to Checkout
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info text-center py-5 shadow-sm">
+            <h5 class="mb-3">Your cart is empty</h5>
+            <a asp-controller="Products" asp-action="list" class="btn btn-primary btn-lg">
+                Continue Shopping
+            </a>
+        </div>
+    }
+</div>

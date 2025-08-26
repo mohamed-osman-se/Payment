@@ -5,7 +5,7 @@ WORKDIR /src
 
 COPY Payment.csproj .
 RUN dotnet restore "Payment.csproj"
-COPY app.db .
+
 COPY . .
 RUN dotnet publish "Payment.csproj" -c Release -o /app/publish
 

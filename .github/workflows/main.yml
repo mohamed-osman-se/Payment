@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -39,36 +39,20 @@ jobs:
       - name: Build & Push Docker Image
         uses: docker/build-push-action@v6
         with:
-          context: ./src/Payment 
+          context: ./src/Payment
           file: ./src/Payment/Dockerfile
           push: true
           tags: |
             ${{ env.IMAGE_NAME }}:latest
             ${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.tag }}
 
-  redeploy_railway:
+  deploy_to_railway:
     needs: build_and_push
     runs-on: ubuntu-latest
+    container: ghcr.io/railwayapp/cli:latest
+    env:
+      SVC_ID: ${{ secrets.RAILWAY_SERVICE_ID }}
+      RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
     steps:
-      - name: Redeploy Production on Railway
-        env:
-          RAILWAY_API_TOKEN: ${{ secrets.RAILWAY_API_TOKEN }}
-          RAILWAY_SERVICE_ID: ${{ secrets.RAILWAY_SERVICE_ID }}
-          RAILWAY_ENV_ID: ${{ secrets.RAILWAY_ENV_ID }}
-        run: |
-          set -e
-          IMAGE_TAG=$(echo "${GITHUB_SHA}" | cut -c1-7)
-          cat > payload.json <<JSON
-          {
-            "query": "mutation ServiceInstanceUpdateImage(\$environmentId:String!, \$serviceId:String!, \$image:String!){ serviceInstanceUpdateImage(environmentId:\$environmentId, serviceId:\$serviceId, image:\$image) }",
-            "variables": {
-              "environmentId": "${RAILWAY_ENV_ID}",
-              "serviceId": "${RAILWAY_SERVICE_ID}",
-              "image": "prgma/payment:${IMAGE_TAG}"
-            }
-          }
-          JSON
-          curl -sS -X POST https://backboard.railway.com/graphql/v2 \
-            -H "Authorization: Bearer ${RAILWAY_API_TOKEN}" \
-            -H "Content-Type: application/json" \
-            --data @payload.json | tee /dev/stderr
+      - name: Redeploy service on Railway
+        run: railway redeploy --service $SVC_ID -y

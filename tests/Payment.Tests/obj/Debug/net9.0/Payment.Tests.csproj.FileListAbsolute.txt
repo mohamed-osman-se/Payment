@@ -159,7 +159,6 @@
 /home/mohamed/Desktop/lab/Payment/tests/Payment.Tests/bin/Debug/net9.0/xunit.runner.utility.netcoreapp10.dll
 /home/mohamed/Desktop/lab/Payment/tests/Payment.Tests/bin/Debug/net9.0/Payment.deps.json
 /home/mohamed/Desktop/lab/Payment/tests/Payment.Tests/bin/Debug/net9.0/Payment.runtimeconfig.json
-/home/mohamed/Desktop/lab/Payment/tests/Payment.Tests/bin/Debug/net9.0/app.db
 /home/mohamed/Desktop/lab/Payment/tests/Payment.Tests/bin/Debug/net9.0/Payment.staticwebassets.runtime.json
 /home/mohamed/Desktop/lab/Payment/tests/Payment.Tests/bin/Debug/net9.0/Payment.staticwebassets.endpoints.json
 /home/mohamed/Desktop/lab/Payment/tests/Payment.Tests/bin/Debug/net9.0/Payment
@@ -304,3 +303,5 @@
 /home/mohamed/Desktop/lab/Payment/tests/Payment.Tests/obj/Debug/net9.0/Payment.Tests.pdb
 /home/mohamed/Desktop/lab/Payment/tests/Payment.Tests/obj/Debug/net9.0/Payment.Tests.genruntimeconfig.cache
 /home/mohamed/Desktop/lab/Payment/tests/Payment.Tests/obj/Debug/net9.0/ref/Payment.Tests.dll
+/home/mohamed/Desktop/lab/Payment/tests/Payment.Tests/bin/Debug/net9.0/Npgsql.dll
+/home/mohamed/Desktop/lab/Payment/tests/Payment.Tests/bin/Debug/net9.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll

@@ -1,3 +1,4 @@
+using System.Globalization;
 using Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
@@ -42,7 +43,9 @@ builder.Services.AddScoped(sp => new PaymentIntentService(sp.GetRequiredService<
 
 
 builder.Services.AddScoped<IPaymentService, StripePaymentService>();
-
+var cultureInfo = new CultureInfo("en-US");
+CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 var app = builder.Build();
 
 app.MapGet("/stripe/test", async () =>

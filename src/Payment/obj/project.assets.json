@@ -3373,11 +3373,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/mohamed/Desktop/Payment/src/Payment/Payment.csproj",
+      "projectUniqueName": "/home/mohamed/Desktop/lab/Payment/src/Payment/Payment.csproj",
       "projectName": "Payment",
-      "projectPath": "/home/mohamed/Desktop/Payment/src/Payment/Payment.csproj",
+      "projectPath": "/home/mohamed/Desktop/lab/Payment/src/Payment/Payment.csproj",
       "packagesPath": "/home/mohamed/.nuget/packages/",
-      "outputPath": "/home/mohamed/Desktop/Payment/src/Payment/obj/",
+      "outputPath": "/home/mohamed/Desktop/lab/Payment/src/Payment/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/mohamed/.nuget/NuGet/NuGet.Config"

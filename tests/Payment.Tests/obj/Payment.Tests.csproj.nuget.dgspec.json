@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/mohamed/Desktop/Payment/tests/Payment.Tests/Payment.Tests.csproj": {}
+    "/home/mohamed/Desktop/lab/Payment/tests/Payment.Tests/Payment.Tests.csproj": {}
   },
   "projects": {
-    "/home/mohamed/Desktop/Payment/src/Payment/Payment.csproj": {
+    "/home/mohamed/Desktop/lab/Payment/src/Payment/Payment.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/mohamed/Desktop/Payment/src/Payment/Payment.csproj",
+        "projectUniqueName": "/home/mohamed/Desktop/lab/Payment/src/Payment/Payment.csproj",
         "projectName": "Payment",
-        "projectPath": "/home/mohamed/Desktop/Payment/src/Payment/Payment.csproj",
+        "projectPath": "/home/mohamed/Desktop/lab/Payment/src/Payment/Payment.csproj",
         "packagesPath": "/home/mohamed/.nuget/packages/",
-        "outputPath": "/home/mohamed/Desktop/Payment/src/Payment/obj/",
+        "outputPath": "/home/mohamed/Desktop/lab/Payment/src/Payment/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/mohamed/.nuget/NuGet/NuGet.Config"
@@ -93,14 +93,14 @@
         }
       }
     },
-    "/home/mohamed/Desktop/Payment/tests/Payment.Tests/Payment.Tests.csproj": {
+    "/home/mohamed/Desktop/lab/Payment/tests/Payment.Tests/Payment.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/mohamed/Desktop/Payment/tests/Payment.Tests/Payment.Tests.csproj",
+        "projectUniqueName": "/home/mohamed/Desktop/lab/Payment/tests/Payment.Tests/Payment.Tests.csproj",
         "projectName": "Payment.Tests",
-        "projectPath": "/home/mohamed/Desktop/Payment/tests/Payment.Tests/Payment.Tests.csproj",
+        "projectPath": "/home/mohamed/Desktop/lab/Payment/tests/Payment.Tests/Payment.Tests.csproj",
         "packagesPath": "/home/mohamed/.nuget/packages/",
-        "outputPath": "/home/mohamed/Desktop/Payment/tests/Payment.Tests/obj/",
+        "outputPath": "/home/mohamed/Desktop/lab/Payment/tests/Payment.Tests/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/mohamed/.nuget/NuGet/NuGet.Config"
@@ -116,8 +116,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "/home/mohamed/Desktop/Payment/src/Payment/Payment.csproj": {
-                "projectPath": "/home/mohamed/Desktop/Payment/src/Payment/Payment.csproj"
+              "/home/mohamed/Desktop/lab/Payment/src/Payment/Payment.csproj": {
+                "projectPath": "/home/mohamed/Desktop/lab/Payment/src/Payment/Payment.csproj"
               }
             }
           }

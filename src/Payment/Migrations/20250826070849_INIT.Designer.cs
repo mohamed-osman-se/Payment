@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Payment.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250825094948_INIT")]
+    [Migration("20250826070849_INIT")]
     partial class INIT
     {
         /// <inheritdoc />

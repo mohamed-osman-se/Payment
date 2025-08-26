@@ -44,8 +44,8 @@ jobs:
       - name: Build & Push Docker Image
         uses: docker/build-push-action@v6
         with:
-          context: ./src/payment
-          file: ./src/payment/Dockerfile
+          context: ./src/Payment 
+          file: ./src/Payment/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}

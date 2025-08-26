@@ -452,7 +452,6 @@
 /home/mohamed/Desktop/Payment/src/Payment/bin/Debug/net9.0/app.db
 /home/mohamed/Desktop/lab/Payment/src/Payment/bin/Debug/net9.0/appsettings.Development.json
 /home/mohamed/Desktop/lab/Payment/src/Payment/bin/Debug/net9.0/appsettings.json
-/home/mohamed/Desktop/lab/Payment/src/Payment/bin/Debug/net9.0/app.db
 /home/mohamed/Desktop/lab/Payment/src/Payment/bin/Debug/net9.0/Payment.staticwebassets.runtime.json
 /home/mohamed/Desktop/lab/Payment/src/Payment/bin/Debug/net9.0/Payment.staticwebassets.endpoints.json
 /home/mohamed/Desktop/lab/Payment/src/Payment/bin/Debug/net9.0/Payment
@@ -677,3 +676,5 @@
 /home/mohamed/Desktop/lab/Payment/src/Payment/obj/Debug/net9.0/Payment.pdb
 /home/mohamed/Desktop/lab/Payment/src/Payment/obj/Debug/net9.0/Payment.genruntimeconfig.cache
 /home/mohamed/Desktop/lab/Payment/src/Payment/obj/Debug/net9.0/ref/Payment.dll
+/home/mohamed/Desktop/lab/Payment/src/Payment/bin/Debug/net9.0/Npgsql.dll
+/home/mohamed/Desktop/lab/Payment/src/Payment/bin/Debug/net9.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll

@@ -56,3 +56,4 @@ jobs:
     steps:
       - name: Redeploy service on Railway
         run: railway redeploy --service $SVC_ID -y
+#end

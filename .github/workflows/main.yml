@@ -35,20 +35,16 @@ jobs:
         uses: docker/setup-buildx-action@v3
       - name: Extract metadata
         id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ${{ env.IMAGE_NAME }}
-          tags: |
-            type=raw,value=latest
-            type=sha,format=short
+        run: echo "tag=$(echo ${GITHUB_SHA} | cut -c1-7)" >> $GITHUB_OUTPUT
       - name: Build & Push Docker Image
         uses: docker/build-push-action@v6
         with:
           context: ./src/Payment 
           file: ./src/Payment/Dockerfile
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: |
+            ${{ env.IMAGE_NAME }}:latest
+            ${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.tag }}
 
   redeploy_railway:
     needs: build_and_push
@@ -61,17 +57,17 @@ jobs:
           RAILWAY_ENV_ID: ${{ secrets.RAILWAY_ENV_ID }}
         run: |
           set -e
-          cat > payload.json <<'JSON'
+          IMAGE_TAG=$(echo "${GITHUB_SHA}" | cut -c1-7)
+          cat > payload.json <<JSON
           {
-            "query": "mutation ServiceInstanceRedeploy($environmentId:String!, $serviceId:String!){ serviceInstanceRedeploy(environmentId:$environmentId, serviceId:$serviceId) }",
+            "query": "mutation ServiceInstanceUpdateImage(\$environmentId:String!, \$serviceId:String!, \$image:String!){ serviceInstanceUpdateImage(environmentId:\$environmentId, serviceId:\$serviceId, image:\$image) }",
             "variables": {
-              "environmentId": "ENV_ID",
-              "serviceId": "SERVICE_ID"
+              "environmentId": "${RAILWAY_ENV_ID}",
+              "serviceId": "${RAILWAY_SERVICE_ID}",
+              "image": "prgma/payment:${IMAGE_TAG}"
             }
           }
           JSON
-          sed -i "s/ENV_ID/${RAILWAY_ENV_ID}/g" payload.json
-          sed -i "s/SERVICE_ID/${RAILWAY_SERVICE_ID}/g" payload.json
           curl -sS -X POST https://backboard.railway.com/graphql/v2 \
             -H "Authorization: Bearer ${RAILWAY_API_TOKEN}" \
             -H "Content-Type: application/json" \

@@ -68,7 +68,7 @@ On each push to `main`:
 ```bash
 # Clone the repository
 git clone https://github.com/mohamed-osman-se/Payment.git
-cd Payment
+cd ~/Payment/src/Payment
 
 # Restore and run
 dotnet restore
@@ -79,7 +79,7 @@ dotnet run
 
 ```bash
 git clone https://github.com/mohamed-osman-se/Payment.git
-cd Payment
+cd ~/Payment/src/Payment
 
 docker build -t payment .
 docker run -p 8080:80 payment

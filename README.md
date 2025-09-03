@@ -45,7 +45,7 @@ On each push to `main`:
 | Language        | C# (.NET 9 SDK) |
 | Framework       | ASP.NET Core MVC |
 | Authentication  | Cookie-based authentication |
-| Database        | EF Core (SQL database) |
+| Database        | EF Core (postgresql  database) |
 | Payment         | Stripe (Checkout + Webhooks) |
 | CI/CD           | GitHub Actions |
 | Hosting         | Railway |

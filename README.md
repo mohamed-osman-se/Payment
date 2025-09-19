@@ -30,6 +30,11 @@ On each push to `main`:
 4. Deploy the updated app automatically to Railway  
 
 ---
+## Video Demo
+
+[![Watch the video](https://img.youtube.com/vi/suHw_KAfWUU/0.jpg)](https://youtu.be/suHw_KAfWUU)
+
+---
 
 ## 📸 Screenshots  
 <img width="1299" height="703" alt="image" src="https://github.com/user-attachments/assets/e03d7e36-d7f6-4828-bcd6-afdc642f5e8a" />  

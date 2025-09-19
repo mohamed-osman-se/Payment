@@ -6,8 +6,8 @@ Welcome to ShopLite — a production-ready online store web app that lets admins
 I built this project to demonstrate backend engineering skills in real-world e-commerce scenarios, including authentication, payment processing, state management, CI/CD pipelines, and containerized deployments.  
 
 🔗 **Live Demo (HTTPS Enabled):**  
-https://payment-production-48f5.up.railway.app/
-https://payment-dloj91ec.b4a.run/
+- https://payment-production-48f5.up.railway.app/
+- https://payment-dloj91ec.b4a.run/
 ---
 
 ## ✨ Why This Project Stands Out  
